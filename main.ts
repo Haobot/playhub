@@ -1,9 +1,11 @@
 function motor (motor_state: boolean) {
     if (motor_state) {
-        microIOBOX.motorRun(microIOBOX.Motors.M1, microIOBOX.Dir.CW, pins.analogReadPin(AnalogPin.P1) / 4)
+        microIOBOX.motorRun(microIOBOX.Motors.M1, microIOBOX.Dir.CW, 66)
+        strip2.showColor(neopixel.colors(NeoPixelColors.Green))
         basic.showIcon(IconNames.Rollerskate)
     } else {
         microIOBOX.motorStopAll()
+        strip2.showColor(neopixel.colors(NeoPixelColors.Red))
         basic.showIcon(IconNames.Butterfly)
     }
 }
@@ -97,13 +99,16 @@ let range2 = strip2.range(0, 4)
 strip2.showColor(neopixel.colors(NeoPixelColors.Red))
 music.setVolume(255)
 microIOBOX.motorStopAll()
+servos.P1.setStopOnNeutral(false)
 basic.forever(function () {
+    Trig_PIR(pins.digitalReadPin(DigitalPin.P14))
+    Trig_Touch(pins.digitalReadPin(DigitalPin.P12))
     Trig_Button(pins.digitalReadPin(DigitalPin.P13))
     Trig_Magnite(pins.digitalReadPin(DigitalPin.P15))
-    Trig_Touch(pins.digitalReadPin(DigitalPin.P12))
 })
 control.inBackground(function () {
     while (true) {
         strip.showBarGraph(Scan_uSonic(), 25)
+        servos.P1.setAngle(Scan_uSonic() * 7)
     }
 })
