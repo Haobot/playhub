@@ -1,5 +1,5 @@
 
-> 在 [https://haobot.github.io/microbit-playhub/](https://haobot.github.io/microbit-playhub/) 打开此页面
+> 在 [https://haobot.github.io/playhub/](https://haobot.github.io/playhub/) 打开此页面
 
 ## 用作扩展
 
