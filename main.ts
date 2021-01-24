@@ -97,7 +97,6 @@ let range2 = strip2.range(0, 4)
 strip2.showColor(neopixel.colors(NeoPixelColors.Red))
 music.setVolume(255)
 microIOBOX.motorStopAll()
-servos.P0.setStopOnNeutral(false)
 basic.forever(function () {
     Trig_Button(pins.digitalReadPin(DigitalPin.P13))
     Trig_Magnite(pins.digitalReadPin(DigitalPin.P15))
